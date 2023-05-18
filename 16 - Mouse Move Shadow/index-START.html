@@ -8,7 +8,7 @@
 <body>
 
   <div class="hero">
-    <h1 contenteditable>🔥WOAH!</h1>
+    <h1 contenteditable>WOW</h1>
   </div>
 
   <style>
@@ -36,6 +36,28 @@
   </style>
 
 <script>
+
+let hero = document.querySelector('.hero');
+let text = hero.querySelector('h1');
+let walk = 100;
+
+function shadow(e) {
+  let width = hero.offsetWidth;
+  let height = hero.offsetHeight;
+  let {offsetX: x, offsetY: y} = e;
+
+  if(this !== e.target) {
+    x = x + e.target.offsetLeft;
+    y = y + e.target.offsetTop;
+  }
+  let xWalk = Math.round((x / width * walk) - (walk / 2));
+  let yWalk = Math.round((y / height * walk) - (walk / 2));
+
+  text.style.textShadow = `${xWalk}px ${yWalk}px 0 rgba(0, 0, 0, 0.5)`;
+};
+
+hero.addEventListener('mousemove', shadow);
+
 </script>
 </body>
 </html>
